@@ -1,0 +1,35 @@
+Package: Riex
+Type: Package
+Title: IEX Stocks and Market Data
+Version: 1.0.0
+Authors@R: person("Myriam", "Ibrahim", email = "ibrahimmyriam7@gmail.com", role = c("aut", "cre"))
+Author: Myriam Ibrahim [aut, cre] 
+Maintainer: Myriam Ibrahim <ibrahimmyriam7@gmail.com>
+URL: https://github.com/TheEliteAnalyst/Riex
+BugReports: https://github.com/TheEliteAnalyst/Riex/issues
+Description: Retrieves efficiently and reliably Investors Exchange ('IEX') stock and market data using 'IEX Cloud API'. The platform is offered by Investors Exchange Group (IEX Group).
+    Main goal is to leverage 'R' capabilities including existing packages to effectively provide financial and statistical analysis as well as visualization in support of fact-based decisions.
+    In addition, continuously improve and enhance 'Riex' by applying best practices and being in tune with users' feedback and requirements.
+    Please, make sure to review and acknowledge Investors Exchange Group (IEX Group) terms and conditions before using 'Riex' (<https://iexcloud.io/terms/>).
+Depends: R (>= 3.5.0), xts, zoo, TTR, tidyr, tibble
+License: GPL-2
+LazyData: true
+Collate: 'IEX_Market_Data.R' 
+Encoding: UTF-8
+RoxygenNote: 6.1.1
+Imports:
+    Rcpp (>= 1.0.0),
+    dplyr,
+    ggplot2 (>= 3.1.0),
+    httr (>= 1.4.0), 
+    purrr (>= 0.2.5),
+    rjson (>= 0.2.20),
+    stringr (>= 1.3.1),
+    tidyverse (>= 1.2.1),
+    urltools (>= 1.7.1),
+    quantmod (>= 0.4-14)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

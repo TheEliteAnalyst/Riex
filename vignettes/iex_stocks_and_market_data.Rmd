@@ -1,0 +1,260 @@
+---
+title: "IEX Stocks and Market Data via IEX API"
+author: "Myriam Ibrahim"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{IEX Stocks and Market Data via IEX API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The main goal of `Riex` is to efficiently retrieve financial and market data using `IEX Cloud API`. In addition, provide robust tool to:
+
+- Enable data analysis and visualization
+- Monitor account usage and alerts
+
+Please make sure to review and acknowledge [IEX Terms of Use](https://iexcloud.io/terms/) before using `Riex`.
+
+Effective June 1st, 2019, subscription will be required to access third party data.
+
+For subscriptions details, visit [IEX - Flexible, scalable pricing](https://iexcloud.io/pricing/).
+
+- Multiple tiers are available to users depending on their requirements with capability to upgrade
+- Usage is measured based on message counts which  depends on API Call and associated weight
+- Example [Company - API Call](https://iexcloud.io/docs/api/#company) has a weight of 1 for each Symbol
+
+Additional details about usage calculations available in [Data Weight - section](https://iexcloud.io/docs/api/#authentication) as well as best practice about storing and sharing [Private & Public Secret Key](https://iexcloud.io/docs/api/#authentication)
+
+## Installation
+
+You can `install` the released version of Riex from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("Riex")
+```
+
+## Examples
+
+Following are basic examples that will demonstrate how to use `Riex` to retrieve Stock and Market information via `IEX Cloud API`.
+
+List of parameters and their valid values:
+
+-  iex_sk : `IEX Cloud API` **Secret Token**.
+
+   *Secret Token* is available to use via Account Console and assigned the variable **sk** in the documentation. e.g. sk <- "sk_xxxxxx".
+   Please note that term "*Secret Token*" and "*Secret Key*" are used interchangeably in `Riex` documentaion  
+
+   Keep your **Secret Token** safe. Your **Secret Token** can make any API call on behalf of your account, 
+   including changes that may impact billing such as enabling pay-as-you-go charges. 
+   
+-  x : A valid IEX Stock Symbol
+-  p : "annual" or "quarter" 
+-  r : Takes only of of the values accepted in API request. {"5y", "2y", "1y", "ytd", "6m", "3m", "1m", "1d"}
+
+
+## Load `Riex`
+
+```{r load, echo=TRUE}
+library(Riex)
+```
+- Assign Secret key to Variable **sk**
+```r
+sk <- "[SECRET KEY]"
+```
+- Assign valid stock symbol to **x**
+```{r symbol, echo=TRUE}
+x <- "TSLA"
+```
+- Assign valid period to variable **r**
+```{r period, echo=TRUE}
+r <- "6m"
+```
+## Chart
+```r
+TSLA <- iex.chart(x, r, sk)
+```
+
+Load `quantmod` package
+
+```r
+library(quantmod)
+```
+
+Generate Barchart
+
+```r
+barChart(TSLA)
+```
+To check available themes to customize  visualization
+
+```r
+names(quantmod:::.chart.theme)
+```
+To apply a different Theme
+
+```r
+barChart(TSLA, theme="white")
+```
+
+If you receive an error run:
+
+```r
+par("mar")
+```
+In case response is similar to the following: [1] 5.1 4.1 4.1 2.1, then run:
+
+```r
+par(mar=c(1,1,1,1))
+barChart(TSLA)
+```
+
+```r
+chartSeries(TSLA)
+```
+
+When possible, results from functions matches OHLC standards for `quantomd` package to leverage its capabilities. Future enhancements to `Riex` will be geared toward enabling comprehensive financial analysis & modeling.
+
+Refer to `quantomd` documentation for additional details about customizing visualization.
+
+## Most Active
+```r 
+Most_Active <- iex.most.active(sk)
+Most_Active['companyName']
+```
+## Book
+```r
+iex.book("GM", sk)
+```
+## Earnings
+```r
+iex.earnings("GM", sk)
+```
+## Financials 
+  The following default functions retrieve income statement, balance sheet, and cash flow data from the most recent reported quarter.
+  Upon further testing of `IEX Cloud API`, additional parameter *"p"* will be added  to allow user to specify annual or quarterly financials.
+  
+  - iex.balance.sheet (x, sk)
+  - iex.cash.flow (x, sk)
+  - iex.income (x, sk)
+  
+Results are rendered in data frame format to allow further manipulation in case of multiple stocks
+
+```r
+GM_BS <- iex.balance.sheet("GM", sk)
+str(GM_BS)
+``` 
+
+Similarly, you can generate the previous quarter Income Statement and Cash Flow statement:
+
+```r 
+GM_IS <- iex.income("GM", sk)
+GM_CF <- iex.cash.flow("GM", sk)
+``` 
+   
+## Key Stats
+Function returns a data frame that includes 20 observations - e.g. PE ratio, number of employees and 52 Weeks high and low, ..etc.
+
+```r
+iex.stats("TSLA", sk)
+```
+## Crypto
+```r
+Bitcoin <- crypto("BTCUSDT", sk)
+Bitcoin
+```
+
+list of available crypto currency symbols in `IEX` as of April 26th, 2019 is included as dataset with `Riex` package and can be viewed using **crypto_symbols**.
+
+```r
+crypto_symbols
+```
+
+for most current list, Visit [IEX-Reference Data](https://iexcloud.io/docs/api/#reference-data) 
+
+## Company Information
+
+```r
+TSLA_Co <- iex.company(x, sk)
+```
+## Company Logo
+
+```r
+TSLA_Logo <- logo (x, sk)
+```
+To store image in current directory, use:
+
+```r
+download.file(TSLA_Logo,"TSLA.png",mode="wb")
+```
+
+To check current directory path:
+
+```r
+getwd()
+```
+## Account
+
+Visit [IEX Cloud API - Account Section](https://iexcloud.io/docs/api/#account) for more details.
+The following functions provide Account and usage details based on **Secret Token** provided. Please make sure to monitor usage regularly as it impacts billing depending on your Account setup.
+
+## Account Metadata
+Output includes **Total Message Limit** and **Total Message Used** in addition to useful info. - e.g. Tier Name
+
+```r
+iex.account(sk)
+```
+## Usage
+Output includes **Monthly Usage**, **Monthly Pay As You Go** and **Token Usage**.
+
+```r
+iex.usage(sk)
+```
+## Key Usage
+
+Key Usage includes the detailed usage by API Call type. 
+
+```r
+iex.key.usage (sk)
+```
+For example:
+
+- STOCK_QUOTE
+- HISTORICAL_PRICES
+- COMPANY
+- REF_DATA
+- CRYPTO_QUOTE
+- COMPANY_LOGO
+- EARNINGS
+- KEY_STATS
+- ACCOUNT_USAGE
+- CASH_FLOW
+- BALANCE_SHEET
+- INCOME
+
+Type with "0" usage are included as well. For example, ACCOUNT_USAGE.
+
+## Daily Usage
+Output includes Total usage per day. Date format is xyyyymmdd - e.g. X20190423
+
+```r
+iex.daily.usage(sk)
+```
+## Monthly Usage
+Output includes Total usage per month. 
+
+```r
+iex.monthly.usage(sk)
+```
+
+## Quote of the Day and Everyday !
+
+> "He who gives up [code] safety for [code] speed deserves neither."
+([via](https://twitter.com/hadleywickham/status/504368538874703872))
