@@ -5,7 +5,6 @@
 #' @seealso Investors Exchange Group (IEX Group) offers flexible and salable pricing.\url{https://iexcloud.io/pricing/}
 #' @seealso View Investors Exchange Group (IEX Group) terms of use and subscription levels.\url{https://iexcloud.io/terms/}
 #' @seealso Package `iexcloudR`\url{https://github.com/schardtbc/iexcloudR}
-#' @import Rcpp
 #' @rawNamespace import (dplyr, except=c(first,last,filter,lag))
 #' @import ggplot2
 #' @import httr
