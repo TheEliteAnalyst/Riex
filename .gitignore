@@ -5,3 +5,5 @@ packrat/lib*/
 .RData
 LICENSE
 cran-comments.md
+DESCRIPTION
+NEWS.md
