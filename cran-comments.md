@@ -1,10 +1,12 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Revised DESCRIPTION file and used undirected quotes when applicable.
+* Excluded Rccp package from imports - files impacted are DESCRIPTION file, NAMESPACE and IEX_Market_Data.R
 
-* Replaced /dontrun{} with /donttest{} for all examples.
+* Revised README.md and README.Rmd 
 
-* Made minor rephrasing changes to Vignettes.
+* Updated to version 1.0.1
+
+
 
 

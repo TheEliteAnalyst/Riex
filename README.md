@@ -43,7 +43,7 @@ You can install the released version of Riex from
 install.packages("Riex")
 ```
 
-## Examples
+## Example
 
 This is a basic example which shows you how to retrieve Company info via
 ‘IEX Cloud API’:
@@ -66,3 +66,5 @@ x <- "TSLA"
 TSLA_Co <- iex.company(x, sk)
 TSLA_Co
 ```
+
+For more details and additional examples, please review `Riex` vignette.

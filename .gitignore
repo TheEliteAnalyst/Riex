@@ -2,5 +2,6 @@ inst/doc
 packrat/lib*/
 .Rproj.user
 .Rhistory
+.RData
 LICENSE
 cran-comments.md
