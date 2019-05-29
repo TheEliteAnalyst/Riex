@@ -1,7 +1,7 @@
 Package: Riex
 Type: Package
 Title: IEX Stocks and Market Data
-Version: 1.0.1
+Version: 1.0.1.9000
 Authors@R: person("Myriam", "Ibrahim", email = "ibrahimmyriam7@gmail.com", role = c("aut", "cre"))
 Author: Myriam Ibrahim [aut, cre] 
 Maintainer: Myriam Ibrahim <ibrahimmyriam7@gmail.com>
