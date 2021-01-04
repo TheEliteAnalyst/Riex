@@ -187,6 +187,7 @@ iex.company <- function(x = 'TSLA', iex_sk){
   } else {
     stock.company <- rjson::fromJSON(url.content)
   }
+  stock.company[lengths(stock.company) == 0] <- NA
   stock.company.df <- tibble::as_tibble(stock.company)
   stock.company.df <- stock.company.df %>%
                         dplyr::select(-("tags")) %>%
