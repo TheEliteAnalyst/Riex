@@ -8,3 +8,6 @@
 ^CRAN-RELEASE$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT.md$
+^\.travis\.yml$
+^doc$
+^Meta$

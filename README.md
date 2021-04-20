@@ -4,6 +4,9 @@
 # Riex
 
 <!-- badges: start -->
+
+[![Travis build
+status](https://travis-ci.com/TheEliteAnalyst/Riex.svg?branch=master)](https://travis-ci.com/TheEliteAnalyst/Riex)
 <!-- badges: end -->
 
 The main goal of ‘Riex’ is to efficiently retrieve financial and market

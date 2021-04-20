@@ -27,7 +27,7 @@ For more details, visit:\url{https://iexcloud.io/docs/api/#financials}
 }
 \examples{
 \donttest{
-  iex.cash.flow("TSLA", sk)
+  iex.cash.flow("TSLA", iex_sk)
  }
 }
 \seealso{

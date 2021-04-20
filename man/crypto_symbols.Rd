@@ -12,7 +12,7 @@ A data frame with 18 rows and 1 variable:
 }
 }
 \source{
-\url{https://api.iextrading.com/1.0/stock/market/crypto}
+\url{https://iexcloud.io/docs/api/#cryptocurrency-symbols}
 }
 \usage{
 crypto_symbols

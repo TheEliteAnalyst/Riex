@@ -23,9 +23,6 @@ For more details, visit:\url{https://iexcloud.io/docs/api/#crypto}
   data(package = "Riex")
   CrytoSymbols <- crypto_symbols
 }
-\donttest{
-  crypto("BTCUSDT")
-}
 }
 \seealso{
 Investors Exchange `IEX` developer guide \url{https://iexcloud.io/docs/api/}

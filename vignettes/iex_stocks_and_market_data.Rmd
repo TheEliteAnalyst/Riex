@@ -93,7 +93,11 @@ Generate Barchart
 ```r
 barChart(TSLA)
 ```
-![TSLA 6 Months Chart](/Users/Myriam/Documents/R/Riex/vignettes/TSLA_6M_Chart.png)
+```{r, echo=FALSE, message=FALSE, fig.cap='TSLA 6 Months Chart', fig.align='center'}
+knitr::include_graphics("./TSLA_6M_Chart.png")
+```
+
+<!--![TSLA 6 Months Chart](/Users/Myriam/Documents/R/Riex/vignettes/TSLA_6M_Chart.png)-->
 
 To check available themes to customize  visualization
 
@@ -202,7 +206,11 @@ To check current directory path:
 ```r
 getwd()
 ```
-![TSLA Logo](/Users/Myriam/Documents/R/Riex/vignettes/TSLA.png)
+
+```{r, echo=FALSE, message=FALSE, fig.cap='TSLA Logo', fig.align='center'}
+knitr::include_graphics("./TSLA.png")
+```
+<!--![TSLA Logo](/Users/Myriam/Documents/R/Riex/vignettes/TSLA.png)-->
 
 ## Account
 
@@ -263,4 +271,9 @@ iex.monthly.usage(sk)
 > "He who gives up [code] safety for [code] speed deserves neither."
 - [Hadley Wickham](https://twitter.com/hadleywickham/status/504368538874703872)
 
-![Hadley Wickham Quote](/Users/Myriam/Documents/R/Riex/vignettes/HadleyWickham_Quote.png)
+
+```{r, echo=FALSE, message=FALSE, fig.cap='Hadley Wickham Quote', fig.align='center'}
+knitr::include_graphics("./HadleyWickham_Quote.png")
+```
+
+<!--![Hadley Wickham Quote](/Users/Myriam/Documents/R/Riex/vignettes/HadleyWickham_Quote.png)-->

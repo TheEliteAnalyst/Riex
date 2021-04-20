@@ -214,10 +214,6 @@ iex.company <- function(x = 'TSLA', iex_sk){
 #'   data(package = "Riex")
 #'   CrytoSymbols <- crypto_symbols
 #' }
-#' @examples
-#' \donttest{
-#'   crypto("BTCUSDT")
-#' }
 #' @export
 crypto <- function(x, iex_sk){
   crypto.df <- data.frame()
@@ -305,7 +301,7 @@ iex.earnings <- function(x, iex_sk){
 #' @return Data frame with stock(s) financial data with opton of selecting quartlery or annually
 #' @examples
 #' \donttest{
-#'   iex.cash.flow("TSLA", sk)
+#'   iex.cash.flow("TSLA", iex_sk)
 #'  }
 #' @name financials
 NULL
@@ -665,7 +661,7 @@ iex.monthly.usage<- function(iex_sk){
 #'   \item{symbol}{symbol, in ticker format}
 #'   ...
 #' }
-#' @source \url{https://api.iextrading.com/1.0/stock/market/crypto}
+#' @source \url{https://iexcloud.io/docs/api/#cryptocurrency-symbols}
 "crypto_symbols"
 
 
