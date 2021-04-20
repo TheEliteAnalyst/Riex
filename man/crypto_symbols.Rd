@@ -4,11 +4,13 @@
 \name{crypto_symbols}
 \alias{crypto_symbols}
 \title{`IEX` Crypto currency symbols}
-\format{A data frame with 18 rows and 1 variable:
+\format{
+A data frame with 18 rows and 1 variable:
 \describe{
   \item{symbol}{symbol, in ticker format}
   ...
-}}
+}
+}
 \source{
 \url{https://api.iextrading.com/1.0/stock/market/crypto}
 }

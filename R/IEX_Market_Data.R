@@ -11,7 +11,6 @@
 #' @import purrr
 #' @import rjson
 #' @import stringr
-#' @import tidyverse
 #' @import urltools
 #' @import xts
 #' @import zoo
@@ -75,6 +74,7 @@ return(stock.quote.df)
 #' }
 #' @export
 iex.chart <- function(x,r, iex_sk){
+  Open <- High <- Low <- Close <- Volume <- NULL
   url_prefix <- "https://cloud.iexapis.com/stable"
   url_stocks_list <- paste0(url_prefix, "/ref-data/symbols?token=",iex_sk)
   req <- httr::GET(url_stocks_list)
@@ -99,8 +99,9 @@ iex.chart <- function(x,r, iex_sk){
     as.data.frame
   assign(paste0(x, "_chart_df"),stock.chart.df)
   stock.chart.df$date <- as.Date(as.character(stock.chart.df$date), format='%Y-%m-%d')
-  colnames(stock.chart.df)[which(colnames(stock.chart.df) %in% c("open","high", "low", "close", "volume") )] <- c("Open","High", "Low", "Close", "Volume")
-  stock.chart.ts <- tidyr::unnest(stock.chart.df[, (colnames(stock.chart.df) %in% c("date", "Open","High", "Low", "Close", "Volume"))])
+  colnames(stock.chart.df)[which(colnames(stock.chart.df) %in% c("close","high","low", "open","volume") )] <- c("Close","High","Low", "Open","Volume")
+  stock.chart.df <- stock.chart.df[ , c("date", "Open","High", "Low", "Close", "Volume")]
+  stock.chart.ts <- tidyr::unnest(stock.chart.df[, (colnames(stock.chart.df) %in% c("date", "Open","High", "Low", "Close", "Volume"))], cols = c(Open, High, Low, Close, Volume))
   stock.chart.ts <- xts(stock.chart.ts[,-1], order.by = stock.chart.ts$date)
 
 return(stock.chart.ts)
@@ -234,6 +235,9 @@ crypto <- function(x, iex_sk){
   if (identical(text, "")) warning("No output to parse.") else crypto <- rjson::fromJSON(url.content)
   crypto.df <- do.call(rbind, crypto) %>%
     as.data.frame
+
+  colnames(crypto.df) = "Values"
+
   return(crypto.df)
 }
 
@@ -269,9 +273,21 @@ iex.earnings <- function(x, iex_sk){
   url = paste0(url_prefix, "/stock/",x_encoded,"/earnings?token=",iex_sk)
   url.info <- httr::GET(url)
   url.content <- content(url.info, as = "text", encoding = "UTF-8")
-  if (identical(text, "")) warning("No output to parse.") else stock.earnings <- rjson::fromJSON(url.content)
-  stock.earnings.list <- lapply(rapply(stock.earnings, enquote, how="unlist"), eval)
-  stock.earnings.df <- as.data.frame(stock.earnings.list)
+  if (identical(text, "")){
+    warning("No output to parse.")
+    stock.earnings.df <- "Null"
+
+  } else if (identical(url.content, "The requested data requires permission to access.")){
+    message("The requested data requires permission to access.check IEX Subscriptions and Pricing @ 'https://www.iexcloud.io/pricing'")
+    stock.earnings.df <- "Null"
+
+  } else {
+    stock.earnings <- rjson::fromJSON(url.content)
+    stock.earnings.list <- lapply(rapply(stock.earnings, enquote, how="unlist"), eval)
+    stock.earnings.df <- as.data.frame(stock.earnings.list)
+
+  }
+
   return (stock.earnings.df)
 }
 
@@ -311,11 +327,23 @@ iex.cash.flow <- function(x,iex_sk){
   url = paste0(url_prefix, "/stock/",x_encoded,"/cash-flow?token=",iex_sk)
   url.info <- httr::GET(url)
   url.content <- content(url.info, as = "text", encoding = "UTF-8")
-  if (identical(text, "")) warning("No output to parse.")
-  else stock.cash.flow <- rjson::fromJSON(url.content)
-  stock.cash.flow.list <- lapply(rapply(stock.cash.flow$cashflow, enquote, how="unlist"), eval)
-  stock.cash.flow.df <- as.data.frame(stock.cash.flow.list)
-  stock.cash.flow.df <- format(stock.cash.flow.df,  scientific=F)
+  if (identical(text, "")){
+    warning("No output to parse.")
+    stock.cash.flow.df <- "Null"
+
+  } else if (identical(url.content, "The requested data is not available to free tier accounts. Please upgrade for access to this data.")){
+    message("The requested data requires permission to access.check IEX Subscriptions and Pricing @ 'https://www.iexcloud.io/pricing'")
+    stock.cash.flow.df <- "Null"
+
+  } else {
+
+    stock.cash.flow <- rjson::fromJSON(url.content)
+    stock.cash.flow.list <- lapply(rapply(stock.cash.flow$cashflow, enquote, how="unlist"), eval)
+    stock.cash.flow.df <- as.data.frame(stock.cash.flow.list)
+    stock.cash.flow.df <- format(stock.cash.flow.df,  scientific=F)
+
+  }
+
   return (stock.cash.flow.df)
 }
 #--------------------- Balance Sheet ---------------------#
@@ -333,14 +361,27 @@ iex.balance.sheet <- function(x,iex_sk){
   stocks_list <- as.list(stocks_list)
   if (toupper(x) %in% stocks_list == TRUE) print("Stock Info is available in IEX") else warning ("Stock Info is not available in IEX")
   x_encoded <- urltools::url_encode(paste(toupper(x), collapse=", "))
-  url = paste0(url_prefix, "/stock/",x_encoded,"//balance-sheet?token=",iex_sk)
+  url = paste0(url_prefix, "/stock/",x_encoded,"/balance-sheet?token=",iex_sk)
   url.info <- httr::GET(url)
   url.content <- content(url.info, as = "text", encoding = "UTF-8")
-  if (identical(text, "")) warning("No output to parse.")
-  else stock.balance.sheet <- rjson::fromJSON(url.content)
-  stock.balance.sheet.list <- lapply(rapply(stock.balance.sheet$balancesheet, enquote, how="unlist"), eval)
-  stock.balance.sheet.df <- as.data.frame(stock.balance.sheet.list)
-  stock.balance.sheet.df <- format(stock.balance.sheet.df,  scientific=F)
+  #if (identical(text, "")) warning("No output to parse.")
+  #else stock.balance.sheet <- rjson::fromJSON(url.content)
+  if (identical(text, "")){
+    warning("No output to parse.")
+    stock.balance.sheet.df <- "Null"
+
+  } else if (identical(url.content, "The requested data is not available to free tier accounts. Please upgrade for access to this data.")){
+    message("The requested data requires permission to access.check IEX Subscriptions and Pricing @ 'https://www.iexcloud.io/pricing'")
+    stock.balance.sheet.df <- "Null"
+
+  } else {
+
+    stock.balance.sheet <- rjson::fromJSON(url.content)
+    stock.balance.sheet.list <- lapply(rapply(stock.balance.sheet$balancesheet, enquote, how="unlist"), eval)
+    stock.balance.sheet.df <- as.data.frame(stock.balance.sheet.list)
+    stock.balance.sheet.df <- format(stock.balance.sheet.df,  scientific=F)
+  }
+
   return (stock.balance.sheet.df)
 }
 #--------------------- Income Statement ---------------------#
@@ -361,11 +402,23 @@ iex.income <- function(x,iex_sk){
   url = paste0(url_prefix, "/stock/",x_encoded,"/income?token=",iex_sk)
   url.info <- httr::GET(url)
   url.content <- content(url.info, as = "text", encoding = "UTF-8")
-  if (identical(text, "")) warning("No output to parse.")
-  else stock.income <- rjson::fromJSON(url.content)
-  stock.income.list <- lapply(rapply(stock.income$income, enquote, how="unlist"), eval)
-  stock.income.df <- as.data.frame(stock.income.list)
-  stock.income.df <- format(stock.income.df,  scientific=F)
+  #if (identical(text, "")) warning("No output to parse.")
+  #else stock.income <- rjson::fromJSON(url.content)
+  if (identical(text, "")){
+    warning("No output to parse.")
+    stock.income.df <- "Null"
+
+  } else if (identical(url.content, "The requested data is not available to free tier accounts. Please upgrade for access to this data.")){
+    message("The requested data requires permission to access.check IEX Subscriptions and Pricing @ 'https://www.iexcloud.io/pricing'")
+    stock.income.df <- "Null"
+
+  } else {
+    stock.income <- rjson::fromJSON(url.content)
+    stock.income.list <- lapply(rapply(stock.income$income, enquote, how="unlist"), eval)
+    stock.income.df <- as.data.frame(stock.income.list)
+    stock.income.df <- format(stock.income.df,  scientific=F)
+  }
+
   return (stock.income.df)
 }
 #--------------------- Stats ---------------------#
@@ -507,7 +560,7 @@ return( iex.account.df)
 }
 
 #--------------------- Usage ---------------------#
-#' @inheritParams iex.account
+#' @param iex_sk is a character vector that include IEX Cloud API Secret Token
 #' @rdname iex.account
 #' @export
 iex.usage <- function(iex_sk){
@@ -532,7 +585,7 @@ iex.usage <- function(iex_sk){
 }
 
 #--------------------- Key Usage ---------------------#
-#' @inheritParams iex.account
+#' @param iex_sk is a character vector that include IEX Cloud API Secret Token
 #' @rdname iex.account
 #' @export
 iex.key.usage<- function(iex_sk){
@@ -555,7 +608,7 @@ iex.key.usage<- function(iex_sk){
 }
 
 #--------------------- Daily Usage ----------------------#
-#' @inheritParams iex.account
+#' @param iex_sk is a character vector that include IEX Cloud API Secret Token
 #' @rdname iex.account
 #' @export
 iex.daily.usage<- function(iex_sk){
@@ -578,7 +631,7 @@ iex.daily.usage<- function(iex_sk){
 }
 
 #--------------------- Monthly Usage ---------------------#
-#' @inheritParams iex.account
+#' @param iex_sk is a character vector that include IEX Cloud API Secret Token
 #' @rdname iex.account
 #' @export
 iex.monthly.usage<- function(iex_sk){

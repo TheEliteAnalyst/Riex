@@ -31,7 +31,7 @@ For subscriptions details, visit [IEX - Flexible, scalable pricing](https://iexc
 - Usage is measured based on message counts which  depends on API Call and associated weight
 - Example [Company - API Call](https://iexcloud.io/docs/api/#company) has a weight of 1 for each Symbol
 
-Additional details about usage calculations available in [Data Weight - section](https://iexcloud.io/docs/api/#authentication) as well as best practice about storing and sharing [Private & Public Secret Key](https://iexcloud.io/docs/api/#authentication)
+Additional details about usage calculations available in [Data Weight - section](https://iexcloud.io/docs/api/#how-credits-work) as well as best practice about storing and sharing [Private & Public Secret Key](https://iexcloud.io/docs/api/#authentication)
 
 ## Installation
 
@@ -93,6 +93,8 @@ Generate Barchart
 ```r
 barChart(TSLA)
 ```
+![TSLA 6 Months Chart](/Users/Myriam/Documents/R/Riex/vignettes/TSLA_6M_Chart.png)
+
 To check available themes to customize  visualization
 
 ```r
@@ -200,6 +202,8 @@ To check current directory path:
 ```r
 getwd()
 ```
+![TSLA Logo](/Users/Myriam/Documents/R/Riex/vignettes/TSLA.png)
+
 ## Account
 
 Visit [IEX Cloud API - Account Section](https://iexcloud.io/docs/api/#account) for more details.
@@ -257,4 +261,6 @@ iex.monthly.usage(sk)
 ## Quote of the Day and Everyday !
 
 > "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+- [Hadley Wickham](https://twitter.com/hadleywickham/status/504368538874703872)
+
+![Hadley Wickham Quote](/Users/Myriam/Documents/R/Riex/vignettes/HadleyWickham_Quote.png)

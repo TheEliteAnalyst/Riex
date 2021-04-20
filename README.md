@@ -4,14 +4,13 @@
 # Riex
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The main goal of ‘Riex’ is to efficiently retrieve financial and market
 data using ‘IEX Cloud API’. In addition, provide robust tool to:
 
-  - Enable data analysis and visualization
-  - Monitor Account usage and alerts
+-   Enable data analysis and visualization
+-   Monitor Account usage and alerts
 
 Please make sure to review and acknowledge [IEX Terms of
 Use](https://iexcloud.io/terms/) before using Riex.
@@ -22,15 +21,15 @@ party data.
 For Subscriptions details, visit [IEX - Flexible, scalable
 pricing](https://iexcloud.io/pricing/).
 
-  - Multiple tiers are available to users depending on their
+-   Multiple tiers are available to users depending on their
     requirements with capability to upgrade
-  - Usage is measured based on message counts which depends on API Call
+-   Usage is measured based on message counts which depends on API Call
     and associated weight
-  - Example [Company - API Call](https://iexcloud.io/docs/api/#company)
+-   Example [Company - API Call](https://iexcloud.io/docs/api/#company)
     has a weight of 1 for each Symbol
 
 Additional details about usage calculations available in [Data Weight -
-section](https://iexcloud.io/docs/api/#authentication) Best practice
+section](https://iexcloud.io/docs/api/#how-credits-work) Best practice
 about storing and sharing [Private & Publice Secret
 Key](https://iexcloud.io/docs/api/#authentication)
 
@@ -50,8 +49,8 @@ This is a basic example which shows you how to retrieve Company info via
 
 iex.company(x, iex\_sk) requires 2 values:
 
-  - x : A valid IEX Stock Symbol
-  - iex\_sk : ‘IEX Cloud API’ Secret Key. It is available to use via
+-   x : A valid IEX Stock Symbol
+-   iex\_sk : ‘IEX Cloud API’ Secret Key. It is available to use via
     Account Console.
 
 Keep your secret token safe. Your secret token can make any API call on
