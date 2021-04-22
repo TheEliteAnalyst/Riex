@@ -19,15 +19,15 @@ iex.income(x, iex_sk)
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
 \value{
-Data frame with stock(s) financial data with opton of selecting quartlery or annually
+Data frame with stock(s) financial data with option of selecting quarterly or annually
 }
 \description{
 Returns income statement, balance sheet, and cash flow data from the most recent reported quarter.
 For more details, visit:\url{https://iexcloud.io/docs/api/#financials}
 }
 \examples{
-\donttest{
-  iex.cash.flow("TSLA", iex_sk)
+\dontrun{
+  iex.cash.flow("TSLA", "sk")
  }
 }
 \seealso{

@@ -19,9 +19,10 @@ To retrieve list of 18 Cyrpto Currency Symbols available in IEX as of April 2019
 For more details, visit:\url{https://iexcloud.io/docs/api/#crypto}
 }
 \examples{
-\donttest{
+\dontrun{
   data(package = "Riex")
   CrytoSymbols <- crypto_symbols
+
 }
 }
 \seealso{

@@ -18,8 +18,8 @@ Key  statistics
 For more details, visit:\url{https://iexcloud.io/docs/api/#key-stats}
 }
 \examples{
-\donttest{
-  iex.stats("TSLA")
+\dontrun{
+  iex.stats("TSLA", "sk")
 }
 }
 \seealso{

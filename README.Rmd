@@ -34,7 +34,7 @@ For Subscriptions details, visit [IEX - Flexible, scalable pricing](https://iexc
 - Example [Company - API Call](https://iexcloud.io/docs/api/#company) has a weight of 1 for each Symbol
 
 Additional details about usage calculations available in [Data Weight - section](https://iexcloud.io/docs/api/#how-credits-work)
-Best practice about storing and sharing [Private & Publice Secret Key](https://iexcloud.io/docs/api/#authentication)
+Best practice about storing and sharing [Private & Public Secret Key](https://iexcloud.io/docs/api/#authentication)
 
 ## Installation
 

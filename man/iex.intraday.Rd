@@ -18,8 +18,8 @@ Data frame that includes stock (s) financial data
 For more details, visit:\url{https://iexcloud.io/docs/api/#historical-prices}
 }
 \examples{
-\donttest{
-  iex.intraday ("TSLA", sk)
+\dontrun{
+  iex.intraday ("TSLA", "sk")
 }
 }
 \seealso{

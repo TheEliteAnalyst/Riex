@@ -18,8 +18,8 @@ Company's Logo
 For more details, visit:\url{https://iexcloud.io/docs/api/#logo}
 }
 \examples{
-\donttest{
-  logo("GOOG")
+\dontrun{
+  logo("GOOG", "sk")
 }
 }
 \seealso{

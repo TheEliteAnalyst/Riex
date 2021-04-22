@@ -19,8 +19,8 @@ Data frame that include earnings
 For more details, visit:\url{https://iexcloud.io/docs/api/#earnings}
 }
 \examples{
-\donttest{
-  iex.earnings("TSLA")
+\dontrun{
+  iex.earnings("TSLA", "sk")
 }
 }
 \seealso{

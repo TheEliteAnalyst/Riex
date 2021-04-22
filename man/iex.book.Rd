@@ -18,11 +18,11 @@ Data frame with stock(s) quote data
 For more details, visit:\url{https://iexcloud.io/docs/api/#book}
 }
 \details{
-for function like book(), only one value wil be accepted per request
+for function like book(), only one value will be accepted per request
 }
 \examples{
-\donttest{
-  iex.book("TSLA")
+\dontrun{
+  iex.book("TSLA", "sk")
 }
 }
 \seealso{

@@ -18,8 +18,8 @@ data frame with company summary data
 For more details, visit:\url{https://iexcloud.io/docs/api/#company}
 }
 \examples{
-\donttest{
-  iex.company("TSLA")
+\dontrun{
+  iex.company("TSLA", "sk")
 }
 }
 \seealso{

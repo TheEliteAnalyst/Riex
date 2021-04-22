@@ -1,3 +1,19 @@
+# Riex 1.0.2
+
+## Enhancements ##
+
+- 'tidyverse' package removed from DESCRIPTION file per Hadley Wickham suggestion to improve performance and avoid future potential issues
+
+- Vignette updated
+
+
+## Bug fixes ##
+
+- iex.company(x,iex_sk) has been modified to resolve error for address field with NULL value (#3, #6)
+- Financials functions - e.g.Cash Flow, Income Statement have been modified to resolve error due to change in IEX API output for paid subscriptions(#4)
+- iex.chart(x,r, iex_sk) has been modified to resolve issue with output format (#8)
+
+
 # Riex 1.0.1
 
 ![](/Users/Myriam/Pictures/Riex_Logo_Final.PNG)

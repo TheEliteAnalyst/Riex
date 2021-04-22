@@ -23,11 +23,11 @@
 # --------------------- Book ---------------------#
 #' @param iex_sk is a character vector that include IEX Cloud API Secret Token
 #' @param x A charcter vector that can include one or multiple  Tickers / Stocks Symbols
-#' @details for function like book(), only one value wil be accepted per request
+#' @details for function like book(), only one value will be accepted per request
 #' @return Data frame with stock(s) quote data
 #' @examples
-#' \donttest{
-#'   iex.book("TSLA")
+#' \dontrun{
+#'   iex.book("TSLA", "sk")
 #' }
 #' @export
 
@@ -69,8 +69,8 @@ return(stock.quote.df)
 #' @inheritParams iex.book
 #' @return Data frame that includes stock (s) financial data
 #' @examples
-#' \donttest{
-#'   iex.chart("TSLA", "1y")
+#' \dontrun{
+#'   iex.chart("TSLA", "1y", "sk")
 #' }
 #' @export
 iex.chart <- function(x,r, iex_sk){
@@ -120,8 +120,8 @@ return(stock.chart.ts)
 #' @inheritParams iex.book
 #' @return Data frame that includes stock (s) financial data
 #' @examples
-#' \donttest{
-#'   iex.intraday ("TSLA", sk)
+#' \dontrun{
+#'   iex.intraday ("TSLA", "sk")
 #' }
 #' @export
 iex.intraday <- function(x,iex_sk){
@@ -164,8 +164,8 @@ iex.intraday <- function(x,iex_sk){
 #' @inheritParams iex.book
 #' @return data frame with company summary data
 #' @examples
-#' \donttest{
-#'   iex.company("TSLA")
+#' \dontrun{
+#'   iex.company("TSLA", "sk")
 #' }
 #' @export
 iex.company <- function(x = 'TSLA', iex_sk){
@@ -210,9 +210,10 @@ iex.company <- function(x = 'TSLA', iex_sk){
 #' @return Data frame that include Crypto currency financial details
 #' To retrieve list of 18 Cyrpto Currency Symbols available in IEX as of April 2019.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'   data(package = "Riex")
 #'   CrytoSymbols <- crypto_symbols
+#'
 #' }
 #' @export
 crypto <- function(x, iex_sk){
@@ -250,8 +251,8 @@ crypto <- function(x, iex_sk){
 #' @inheritParams iex.book
 #' @return Data frame that include earnings
 #' @examples
-#' \donttest{
-#'   iex.earnings("TSLA")
+#' \dontrun{
+#'   iex.earnings("TSLA", "sk")
 #' }
 #' @export
 iex.earnings <- function(x, iex_sk){
@@ -298,10 +299,10 @@ iex.earnings <- function(x, iex_sk){
 #' @seealso Package `iexcloudR`\url{https://github.com/schardtbc/iexcloudR}
 #' @author Myriam Ibrahim
 #' @inheritParams iex.book
-#' @return Data frame with stock(s) financial data with opton of selecting quartlery or annually
+#' @return Data frame with stock(s) financial data with option of selecting quarterly or annually
 #' @examples
-#' \donttest{
-#'   iex.cash.flow("TSLA", iex_sk)
+#' \dontrun{
+#'   iex.cash.flow("TSLA", "sk")
 #'  }
 #' @name financials
 NULL
@@ -429,8 +430,8 @@ iex.income <- function(x,iex_sk){
 #' @inheritParams iex.book
 #' @return Key  statistics
 #' @examples
-#' \donttest{
-#'   iex.stats("TSLA")
+#' \dontrun{
+#'   iex.stats("TSLA", "sk")
 #' }
 #' @export
 iex.stats <- function(x="GM", iex_sk){
@@ -459,7 +460,7 @@ return(stock.stats.df)
 }
 
 #--------------------- Lists - Most Active ---------------------#
-#' Returns the quotes for the top 10 most active symbols. Data schedulued for intraday update.
+#' Returns the quotes for the top 10 most active symbols. Data scheduled for intraday update.
 #'
 #' For more details, visit:\url{https://iexcloud.io/docs/api/#list}
 #' @seealso Investors Exchange `IEX` developer guide \url{https://iexcloud.io/docs/api/}
@@ -497,8 +498,8 @@ return(most.active.df)
 #' @inheritParams iex.book
 #' @return Company's Logo
 #' @examples
-#' \donttest{
-#'   logo("GOOG")
+#' \dontrun{
+#'   logo("GOOG", "sk")
 #' }
 #' @export
 logo <- function(x, iex_sk){

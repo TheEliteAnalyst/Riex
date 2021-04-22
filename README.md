@@ -33,7 +33,7 @@ pricing](https://iexcloud.io/pricing/).
 
 Additional details about usage calculations available in [Data Weight -
 section](https://iexcloud.io/docs/api/#how-credits-work) Best practice
-about storing and sharing [Private & Publice Secret
+about storing and sharing [Private & Public Secret
 Key](https://iexcloud.io/docs/api/#authentication)
 
 ## Installation
