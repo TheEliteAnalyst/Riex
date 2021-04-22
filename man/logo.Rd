@@ -7,7 +7,7 @@
 logo(x, iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -18,8 +18,8 @@ Company's Logo
 For more details, visit:\url{https://iexcloud.io/docs/api/#logo}
 }
 \examples{
-\donttest{
-  logo("GOOG")
+\dontrun{
+  logo("GOOG", "sk")
 }
 }
 \seealso{

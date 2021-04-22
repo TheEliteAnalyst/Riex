@@ -1,3 +1,19 @@
+# Riex 1.0.2
+
+## Enhancements ##
+
+- 'tidyverse' package removed from DESCRIPTION file per Hadley Wickham suggestion to improve performance and avoid future potential issues
+
+- Vignette updated
+
+
+## Bug fixes ##
+
+- iex.company(x,iex_sk) has been modified to resolve error for address field with NULL value (#3, #6)
+- Financials functions - e.g.Cash Flow, Income Statement have been modified to resolve error due to change in IEX API output for paid subscriptions(#4)
+- iex.chart(x,r, iex_sk) has been modified to resolve issue with output format (#8)
+
+
 # Riex 1.0.1
 
 ![](/Users/Myriam/Pictures/Riex_Logo_Final.PNG)
@@ -24,7 +40,7 @@ First `Riex` release includes basic functions that retrieve data in a standard f
    
 Keep your **Secret Token** safe. Your **Secret Token** can make any API call on behalf of your account, including changes that may impact billing such as enabling pay-as-you-go charges. 
 
-For more details about best practices to store and encrypt **Secret Key/ Token** check [Managing secrets](https://cran.r-project.org/web/packages/httr/vignettes/secrets.html) *by Hadley Wickham*
+For more details about best practices to store and encrypt **Secret Key/ Token** check [httr package | Managing secrets](https://CRAN.R-project.org/package=httr) *by Hadley Wickham*
 
 Load Package
 ```r
@@ -90,7 +106,7 @@ chartSeries(TSLA)
 
 **To create an interactive chart for multiple stocks**
 
-*Credit*: [Chris Bow](https://medium.com/datadriveninvestor/interactive-time-series-plots-in-r-bceff3a7bb04)
+*Credit*: [Chris Bow](https://medium.datadriveninvestor.com/interactive-time-series-plots-in-r-bceff3a7bb04)
 
 1. Retrieve OHLC data
 

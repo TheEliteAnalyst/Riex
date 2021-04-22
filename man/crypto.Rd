@@ -7,7 +7,7 @@
 crypto(x, iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -19,9 +19,10 @@ To retrieve list of 18 Cyrpto Currency Symbols available in IEX as of April 2019
 For more details, visit:\url{https://iexcloud.io/docs/api/#crypto}
 }
 \examples{
-\donttest{
+\dontrun{
   data(package = "Riex")
   CrytoSymbols <- crypto_symbols
+
 }
 }
 \seealso{

@@ -50,7 +50,7 @@ List of parameters and their valid values:
 -  iex_sk : `IEX Cloud API` **Secret Token**.
 
    *Secret Token* is available to use via Account Console and assigned the variable **sk** in the documentation. e.g. sk <- "sk_xxxxxx".
-   Please note that term "*Secret Token*" and "*Secret Key*" are used interchangeably in `Riex` documentaion  
+   Please note that term "*Secret Token*" and "*Secret Key*" are used interchangeably in `Riex` documentation  
 
    Keep your **Secret Token** safe. Your **Secret Token** can make any API call on behalf of your account, 
    including changes that may impact billing such as enabling pay-as-you-go charges. 

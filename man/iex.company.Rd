@@ -7,7 +7,7 @@
 iex.company(x = "TSLA", iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -18,8 +18,8 @@ data frame with company summary data
 For more details, visit:\url{https://iexcloud.io/docs/api/#company}
 }
 \examples{
-\donttest{
-  iex.company("TSLA")
+\dontrun{
+  iex.company("TSLA", "sk")
 }
 }
 \seealso{

@@ -7,7 +7,7 @@
 iex.chart(x, r, iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{r}{An alpha numeric object that represents the time range selected.}
 
@@ -23,8 +23,8 @@ For more details, visit:\url{https://iexcloud.io/docs/api/#historical-prices}
 r takes only of of the values accepted IN API request. {"5y", "2y", "1y", "ytd", "6m", "3m", "1m", "1d"}
 }
 \examples{
-\donttest{
-  iex.chart("TSLA", "1y")
+\dontrun{
+  iex.chart("TSLA", "1y", "sk")
 }
 }
 \seealso{

@@ -7,7 +7,7 @@
 iex.book(x, iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -18,11 +18,11 @@ Data frame with stock(s) quote data
 For more details, visit:\url{https://iexcloud.io/docs/api/#book}
 }
 \details{
-for function like book(), only one value wil be accepted per request
+for function like book(), only one value will be accepted per request
 }
 \examples{
-\donttest{
-  iex.book("TSLA")
+\dontrun{
+  iex.book("TSLA", "sk")
 }
 }
 \seealso{

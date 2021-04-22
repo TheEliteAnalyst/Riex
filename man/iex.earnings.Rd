@@ -8,7 +8,7 @@ Earnings are available quarterly (last 4 quarters)}
 iex.earnings(x, iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -19,8 +19,8 @@ Data frame that include earnings
 For more details, visit:\url{https://iexcloud.io/docs/api/#earnings}
 }
 \examples{
-\donttest{
-  iex.earnings("TSLA")
+\dontrun{
+  iex.earnings("TSLA", "sk")
 }
 }
 \seealso{

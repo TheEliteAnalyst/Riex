@@ -2,7 +2,7 @@
 % Please edit documentation in R/IEX_Market_Data.R
 \name{iex.most.active}
 \alias{iex.most.active}
-\title{Returns the quotes for the top 10 most active symbols. Data schedulued for intraday update.}
+\title{Returns the quotes for the top 10 most active symbols. Data scheduled for intraday update.}
 \usage{
 iex.most.active(iex_sk)
 }

@@ -7,7 +7,7 @@
 iex.stats(x = "GM", iex_sk)
 }
 \arguments{
-\item{x}{A charcter vector that can include one or multiple  Tickers / Stocks Symbols}
+\item{x}{A character vector that can include one or multiple  Tickers / Stocks Symbols}
 
 \item{iex_sk}{is a character vector that include IEX Cloud API Secret Token}
 }
@@ -18,8 +18,8 @@ Key  statistics
 For more details, visit:\url{https://iexcloud.io/docs/api/#key-stats}
 }
 \examples{
-\donttest{
-  iex.stats("TSLA")
+\dontrun{
+  iex.stats("TSLA", "sk")
 }
 }
 \seealso{
