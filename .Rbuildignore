@@ -9,5 +9,8 @@
 ^README\.Rmd$
 ^CODE_OF_CONDUCT.md$
 ^\.travis\.yml$
+<<<<<<< HEAD
 ^doc$
 ^Meta$
+=======
+>>>>>>> a8dab2681635484ad95de302145ceb82b902feb0
