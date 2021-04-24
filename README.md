@@ -9,9 +9,9 @@
 status](https://travis-ci.com/TheEliteAnalyst/Riex.svg?branch=master)](https://travis-ci.com/TheEliteAnalyst/Riex)
 ![Version](https://img.shields.io/github/r-package/v/theeliteanalyst/riex)
 ![License](https://img.shields.io/cran/l/Riex) ![Open
-issues](https://img.shields.io/github/issues-raw/theeliteanalyst/riex)
+issues](https://img.shields.io/github/issues-raw/theeliteanalyst/riex?color=red)
 ![Closed
-issues](https://img.shields.io/github/issues-closed-raw/theeliteanalyst/riex)
+issues](https://img.shields.io/github/issues-closed-raw/theeliteanalyst/riex?color=success)
 ![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FTheEliteAnalyst)
 
 <!-- badges: end -->
