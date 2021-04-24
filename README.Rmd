@@ -16,6 +16,12 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/TheEliteAnalyst/Riex.svg?branch=master)](https://travis-ci.com/TheEliteAnalyst/Riex)
+![Version](https://img.shields.io/github/r-package/v/theeliteanalyst/riex)
+![License](https://img.shields.io/cran/l/Riex)
+![Open issues](https://img.shields.io/github/issues-raw/theeliteanalyst/riex)
+![Closed issues](https://img.shields.io/github/issues-closed-raw/theeliteanalyst/riex)
+![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FTheEliteAnalyst)
+
 <!-- badges: end -->
 
 The main goal of 'Riex' is to efficiently retrieve financial and market data using 'IEX Cloud API'. In addition, provide robust tool to:
